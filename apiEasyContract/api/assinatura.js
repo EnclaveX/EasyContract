@@ -10,7 +10,7 @@ module.exports = app => {
         const assinatura = { ...req.body }
 
         const easyContractHashId = req.params.easyContractHashId
-        
+
         const retorno = myContractInstance.inserirAssinatura.sendTransaction(easyContractHashId,
             assinatura.userPrivateKey,
             assinatura.dateSigned,
@@ -23,7 +23,7 @@ module.exports = app => {
             })
 
         res.json({ status: 204, resultado: retorno, easyContractHashId })
-    }
+    } 
 
     const buscar = (req, res) => {
         const easyContractHashId = req.params.easyContractHashId
