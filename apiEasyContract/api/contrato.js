@@ -35,6 +35,9 @@ module.exports = app => {
         const response = myContractInstance.buscarContrato.
             call(easyContractHashId);
 
+            console.log(response)
+            console.log(easyContractHashId)
+
         res.json({
             status: 204,
             resultado: response
