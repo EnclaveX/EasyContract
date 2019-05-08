@@ -28,8 +28,6 @@ module.exports = app => {
         const contractId = req.params.contractId      
         const contract = { ...req.body }
 
-        console.log(contract.privateKey)
-
         app.db('contract_signs')
             .update({
                 signed:'SIM',

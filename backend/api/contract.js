@@ -72,14 +72,18 @@ module.exports = app => {
 
     const get = async (req, res) => {
         const page = req.query.page || 1
-
         const result = await app.db('contracts').count('id').first()
         const count = parseInt(result.count)
 
         app.db('contracts')
             .select('id', 'title', 'userRegisterId')
-            .limit(limitPagination).offset(page * limitPagination - limitPagination)
-            .then(contracts => res.json({ data: contracts, count, limitPagination }))
+            .limit(limitPagination)
+            .offset(page * limitPagination - limitPagination)
+            .then(contracts => res.json({
+                data: contracts,
+                count,
+                limitPagination
+            }))
             .catch(err => res.status(500).send(err))
     }
 

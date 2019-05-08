@@ -17,9 +17,6 @@ module.exports = app => {
 
         const isMatch = bcrypt.compareSync(req.body.password, user.password)
 
-        console.log(isMatch)
-        console.log(req.body.password)
-        console.log(user.password)
         if (!isMatch) return res.status(401).send('Email/Senha inválidos!')
 
         const now = Math.floor(Date.now() / 1000)
@@ -50,7 +47,7 @@ module.exports = app => {
                 }
             }
         } catch (e) {
-            // problema com o token
+            return res.send(false)
         }
 
         res.send(false)

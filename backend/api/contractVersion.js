@@ -25,7 +25,6 @@ module.exports = app => {
         try {
             const rowsDeleted = await app.db('contract_versions')
                 .where({ id: req.params.id }).del()
-
             try {
                 existsOrError(rowsDeleted, 'A versão do contrato não foi encontrado.')
             } catch (msg) {

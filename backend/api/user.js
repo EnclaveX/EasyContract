@@ -17,9 +17,7 @@ module.exports = app => {
         try {
             existsOrError(user.name, 'O nome não foi informado')
             existsOrError(user.cgc, 'O CPF/CNPJ não foi informado')
-            
             validateCgc(user.cgc, 'CPF/CNPJ inválido')
-
             existsOrError(user.email, 'O e-mail não foi informado')
             existsOrError(user.password, 'A senha não foi informada')
             existsOrError(user.confirmPassword, 'A confirmação da senha não foi informada')
@@ -38,6 +36,7 @@ module.exports = app => {
         }
 
         user.password = encryptPassword(user.password)
+        
         delete user.confirmPassword
 
         if(user.id) {
