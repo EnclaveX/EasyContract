@@ -4,7 +4,7 @@ module.exports = app => {
     var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 
     var MyContract = web3.eth.contract(app.config.global.abiEasyContract);
-    var myContractInstance = MyContract.at('0x0501f764A93A0410b6f10b9609a7a0De5CCe5701');
+    var myContractInstance = MyContract.at('0xE128f498683E85da03906525935C295DC42b1937');
 
     const insert = (req, res) => {
         const contract = { ...req.body }
@@ -34,9 +34,6 @@ module.exports = app => {
 
         const response = myContractInstance.buscarContrato.
             call(easyContractHashId);
-
-            console.log(response)
-            console.log(easyContractHashId)
 
         res.json({
             status: 204,

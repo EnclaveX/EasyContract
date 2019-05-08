@@ -4,7 +4,7 @@ module.exports = app => {
     var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 
     var MyContract = web3.eth.contract(app.config.global.abiEasyContract);
-    var myContractInstance = MyContract.at('0x9A7DC170658BB4116Ef2d3Ca50e6C2a1E9F589d8');
+    var myContractInstance = MyContract.at('0xE128f498683E85da03906525935C295DC42b1937');
 
     const insert = (req, res) => {
         const contractSign = { ...req.body }
