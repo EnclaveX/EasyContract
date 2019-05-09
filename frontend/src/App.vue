@@ -64,11 +64,6 @@ export default {
 </script>
 
 <style>
-	* {
-		font-family: "Lato", sans-serif;
-		font-weight: 100;
-	}
-
 	body {
 		margin: 0;
 	}

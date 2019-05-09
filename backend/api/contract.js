@@ -68,7 +68,7 @@ module.exports = app => {
         }
     }
 
-    const limitPagination = 999
+    const limitPagination = 9
 
     const get = async (req, res) => {
         const page = req.query.page || 1

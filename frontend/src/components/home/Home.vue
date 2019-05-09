@@ -18,7 +18,7 @@
             </div>
             <div class="linkContractQuery" @click="showContractsQuery">Ver todos os contratos</div>
         </div>
-        <div v-else class="warning">
+        <div v-else-if="pageReady" class="warning">
             <h4>Você não possúi um certificado válido instalado nesta máquina</h4>
             <h5>Clique no botão abaixo para fazer o download do seu certificado.</h5>
             <b-button @click="createPrivateKey" variant="primary">Download do certificado</b-button>
@@ -48,7 +48,8 @@ export default {
                 userSignsCount: 0
             },
             showContractSign: false,
-            certificadoDigitalValid: false
+            certificadoDigitalValid: false,
+            pageReady: false
         }
     },
     methods: {
@@ -73,16 +74,19 @@ export default {
         async showContractsQuery(){
             this.$router.push({ path: `/contracts` })
         },
-        async verifyPrivateKey(){
+       verifyPrivateKey(){
             const json = localStorage.getItem(userKey)
             const userData = JSON.parse(json) 
 
-            axios['get'](`${baseCertificadoUrl}/authenticate`)
+            return axios['get'](`${baseCertificadoUrl}/authenticate`)
                 .then(e => {
-                        if (e.data.O === userData.cgc){
-                            this.certificadoDigitalValid = true
-                        }
-                    })
+                    if (e.data.O === userData.cgc){
+                        this.certificadoDigitalValid = true
+                    } else {
+                        this.certificadoDigitalValid = false
+                    }
+                })
+                .then(e => this.certificadoDigitalValid)
         },
         async showContracts(contract, type){
             if (type === 'toSign'){
@@ -126,10 +130,16 @@ export default {
             })
         }
     },
-    mounted() {
+    created(){
         this.verifyPrivateKey()
+    },
+    mounted() {
         this.loadContracts()
         this.loadContractsToSign()
+
+        this.pageReady = true
+    },
+    updated(){
     }
 }
 </script>
@@ -138,17 +148,19 @@ export default {
     .home {
         display: flex;
         flex-direction: column;
-        flex-wrap: wrap;
     }
 
     .contracts {
-        display: flex;
+        display: block;
         flex-direction: column;
+        width: 100%;
     }
 
     .writed {
         display: flex;
+        width: 100%;
         flex-direction: row;
+        flex-wrap: wrap;
     }
 
     .toSign {

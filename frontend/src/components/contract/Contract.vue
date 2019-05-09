@@ -102,7 +102,7 @@
                 { key: "name", label: "Nome", sortable: true },
                 { key: "cgc", label: "CPF/CNPJ", sortable: true },
                 { key: "email", label: "E-Mail", sortable: true },
-                { key: "signed", label: "Assinado?", sortable: true },
+                { key: "signed", label: "Assinado?",  sortable: true },
                 { key: "actions", label: "Ações" }
             ]
             };
@@ -339,44 +339,44 @@
     };
 </script>
 
-    <style>
-.contract {
-  display: flex;
-  flex-direction: column;
-}
+<style>
+    .contract {
+        display: flex;
+        flex-direction: column;
+    }
 
-.contract-form {
-  margin: 0 20px 20px 20px;
-}
+    .contract-form {
+        margin: 0 20px 20px 20px;
+    }
 
-.contract-sources {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  height: 100%;
-}
+    .contract-sources {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        height: 100%;
+        }
 
-.button-line {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 10px;
-  margin-right: 5px;
-}
+    .button-line {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 10px;
+        margin-right: 5px;
+    }
 
-.quillWrapper {
-  height: inherit;
-}
+    .quillWrapper {
+        height: inherit;
+    }
 
-.button-line {
-  display: flex;
-  justify-content: flex-start;
-  margin-left: 10px;
-}
+    .button-line {
+        display: flex;
+        justify-content: flex-start;
+        margin-left: 10px;
+    }
 
-.button-line-add {
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
+    .button-line-add {
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
 </style>
